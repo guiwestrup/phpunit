@@ -7,6 +7,7 @@
 		private $nome;
 		private $cpf;
 		private $telefone;
+		private $email;
 
 
 		public function __construct(string $nome = '', string $cpf = '', string $telefone = '')
@@ -30,8 +31,8 @@
 		public static function validaCpf(string $cpf): bool
 		{
 			if (strlen($cpf) != 11) {
-				throw new InvalidArgumentException(
-	                sprintf('"%s" cpf precisa ter 11 dígitos',$email)
+				throw new \InvalidArgumentException(
+	                sprintf('"%s" cpf precisa ter 11 dígitos',$cpf)
 	            );
 			}
 			// Verifica se nenhuma das sequências invalidas abaixo 
@@ -46,8 +47,8 @@
 				$cpf == '77777777777' || 
 				$cpf == '88888888888' || 
 				$cpf == '99999999999') {
-				throw new InvalidArgumentException(
-	                sprintf('"%s" cpf repetidos',$email)
+				throw new \InvalidArgumentException(
+	                sprintf('"%s" cpf repetidos',$cpf)
 	            );
 			 // Calcula os digitos verificadores para verificar se o
 			 // CPF é válido
@@ -60,8 +61,8 @@
 					}
 					$d = ((10 * $d) % 11) % 10;
 					if ($cpf{$c} != $d) {
-						throw new InvalidArgumentException(
-			                sprintf('"%s" cpf inválido',$email)
+						throw new \InvalidArgumentException(
+			                sprintf('"%s" cpf inválido',$cpf)
 			            );
 					}
 				}
@@ -80,6 +81,7 @@
 		{
 			return $this->cpf;
 		}
+
 	}
 
 ?>
